@@ -1,0 +1,99 @@
+/ <div class="container">
+  <div class="login-container">
+      <div class="login">
+          
+          <div class="head">
+              <h1>create your account</h1>
+              <div class="head-sign-in"><span>to continue</span></div>
+          </div>
+          <form class="login-form" [formGroup]="signUpForm">
+              <div>
+                  <mat-form-field appearance="outline" class="width49 mr-4">
+                      <mat-label>first firstName</mat-label>
+                      <input type="text" matInput formControlName="firstName" id="firstName">
+                      <mat-error *ngIf="signUpForm.controls.firstName.errors">
+                          <span class="error-span"
+                              *ngIf="signUpForm.controls.firstName.errors.required">Enter the first name</span>
+                      </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="width49">
+                      <mat-label>last name</mat-label>
+                      <input type="text" matInput formControlName="lastName" id="lastName">
+                      <mat-error *ngIf="signUpForm.controls.lastName.errors">
+                          <span class="error-span"
+                              *ngIf="signUpForm.controls.lastName.errors.required">enter the last name</span>
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="outline" >
+                  <mat-label>phone number</mat-label>
+                  <input type="text" matInput formControlName="mobileNumber" id="mobileNumber">
+                  <mat-icon matSuffix>phone
+                  </mat-icon>
+                  <mat-error *ngIf="signUpForm.controls.mobileNumber.errors">
+                      <span class="error-span" *ngIf="signUpForm.controls.mobileNumber.errors.required">
+                          enter mobile number</span>
+                      <span class="error-span"
+                          *ngIf="signUpForm.controls.mobileNumber.errors.pattern">enter only number</span>
+                      <span class="error-span"
+                          *ngIf="signUpForm.controls.mobileNumber.errors.minlength">enter ten digit phone number</span>
+                      <span class="error-span"
+                          *ngIf="signUpForm.controls.mobileNumber.errors.maxlength">enter ten digit phone number</span>
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" >
+                  <mat-label>email</mat-label>
+                  <input type="text" matInput formControlName="email" id="email">
+                  <mat-icon matSuffix>email
+                  </mat-icon>
+                  <mat-error *ngIf="signUpForm.controls.email.errors">
+                      <span class="error-span" *ngIf="signUpForm.controls.email.errors.email">
+                          enter valid email</span>
+                  </mat-error>
+              </mat-form-field>
+              <div>
+                  <mat-form-field appearance="outline"  class="width49 mr-4">
+                      <mat-label>password</mat-label>
+                      <input [type]="isPassword?'text':'password'" formControlName="password" id="password" matInput>
+                      <mat-icon class="cursor-pointer" matSuffix (click)="togglePassword()">
+                          {{isPassword?'visibility':'visibility_off'}}</mat-icon>
+                      <mat-error *ngIf="signUpForm.controls.password.errors">
+                          <span class="error-span" *ngIf="signUpForm.controls.password.errors.required">
+                              enter password</span>
+                      </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline"  class="width49">
+                      <mat-label>confirm</mat-label>
+                      <input [type]="isConfirm?'text':'password'" formControlName="confirm" id="confirm" matInput>
+                      <mat-icon class="cursor-pointer" matSuffix (click)="toggleConfirm()">
+                          {{isPassword?'visibility':'visibility_off'}}</mat-icon>
+                      <mat-error *ngIf="signUpForm.controls.confirm.errors">
+                          <span class="error-span" *ngIf="signUpForm.controls.confirm.errors.required">
+                              confirm the password</span>
+                          <span class="error-span" *ngIf="signUpForm.controls.confirm.errors.same">
+                               password mismatch</span>
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+
+              
+              <div class="align-right">
+                  <button mat-raised-button color="primary"
+                      (click)="signUp()">sign_up</button>
+              </div>
+          </form>
+          <span>already have account<a href="javascript:;" class="account-link"
+                  (click)="routeTo('./signin')">sign in</a></span>
+      </div>
+      <footer class="footer">
+          <button mat-flat-button class="footer-button"
+              (click)="routeTo('')">help</button>
+          <button mat-flat-button class="footer-button"
+              (click)="routeTo">privacy</button>
+          <button mat-flat-button class="footer-button"
+              (click)="routeTo">terms</button>
+      </footer>
+  </div>
+
+</div>
